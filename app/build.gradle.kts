@@ -8,7 +8,8 @@ android {
     namespace = "com.example.lab_week_13"
     compileSdk = 36
 
-    defaultConfig {        applicationId = "com.example.test_lab_week_12"
+    defaultConfig {
+        applicationId = "com.example.test_lab_week_12"
         minSdk = 24
         targetSdk = 36
         versionCode = 1
@@ -56,6 +57,9 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
+    implementation(libs.androidx.room.runtime)
+    implementation(libs.androidx.room.ktx)
+    kapt (libs.androidx.room.compiler)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
