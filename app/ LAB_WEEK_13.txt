@@ -1,0 +1,17 @@
+1. MVVM is important because it allows you to separate the UI and business logic. This separation means that when you need to redesign the UI or update the logic, you only touch the relevant component without affecting others. It makes it easier to add new features and test existing code. It is also useful for creating huge applications with a lot of data and views.
+- Files:
+  - Model (Data Layer): Movie.kt, MovieDao.kt, MovieDatabase.kt
+  - View (UI): activity_main.xml, MainActivity.kt, RecyclerViewBinding.kt
+  - ViewModel: MovieViewModel.kt
+
+2. Data Binding is more efficient because it provides a way for your ViewModel to directly communicate with your Views without the need of using FindViewById or similar methods. It allows you to bind variables (like popularMovies) directly into the layout XML.
+
+3. - The Singleton Pattern is important because it ensures that there is only one single instance of the Database throughout multiple threads.
+- It ensures data validity and prevents Race Conditions.
+- It is crucial for performance because creating a new instance of the Database is expensive.
+
+4.- The Repository Pattern is important because it synchronizes the application data between the web service (API) and the local database (Room).
+- It ensures that the data in the local database is always up to date with the web service.
+- It enables the user to access the app and view data even when there is no internet connection (offline mode).
+
+5. Based on the module, the alternative method is fetching data only when the app or repository is initialized/opened (as done in Part 2). However, without WorkManager, there is no built-in way to refresh the database at a specific interval or when the app is completely closed/restarted. WorkManager is specifically used to ensure cached data stays up to date in the background.
