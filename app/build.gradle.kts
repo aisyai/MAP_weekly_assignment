@@ -8,7 +8,8 @@ android {
     namespace = "com.example.lab_week_13"
     compileSdk = 36
 
-    defaultConfig {        applicationId = "com.example.test_lab_week_12"
+    defaultConfig {
+        applicationId = "com.example.test_lab_week_12"
         minSdk = 24
         targetSdk = 36
         versionCode = 1
