@@ -1,0 +1,74 @@
+1. Code Handling Path & URI
+Bagian kode yang menangani pembuatan file pada path tertentu dan menghasilkan URI-nya terdapat di dalam file ProviderFileManager.kt, khususnya pada fungsi generatePhotoUri. Fungsi ini menentukan direktori penyimpanan (getExternalFilesDir) dan membungkusnya menjadi URI menggunakan helper.
+
+fun generatePhotoUri(time: Long): FileInfo {
+    val name = "img_$time.jpg"
+    // Get the file object
+    // The file will be stored in the folder defined in
+    // file_provider_paths.xml
+    val file = File(
+        context.getExternalFilesDir(fileHelper.getPicturesFolder()),
+        name
+    )
+    return FileInfo(
+        fileHelper.getUriFromFile(file),
+        file,
+        name,
+        fileHelper.getPicturesFolder(),
+        "image/jpeg"
+    )
+}
+
+2. FileInfo Attributes
+- URI (First Attribute): URI ini merujuk pada lokasi sementara (temporary identifier) dari file yang dihasilkan oleh FileProvider. URI ini digunakan untuk memberikan izin akses (grant access) yang aman kepada aplikasi eksternal (seperti aplikasi Kamera) agar bisa menulis atau menyimpan hasil foto ke dalam penyimpanan internal aplikasi kita ("internal storage") tanpa mengekspos path aslinya secara langsung .
+- relativePath (Fourth Attribute): relativePath merujuk pada nama folder atau direktori kategori di mana file tersebut akan disimpan atau diorganisir di dalam sistem (misalnya folder "Pictures" atau "Movies"). Nilai ini diambil dari Environment directory (seperti Environment.DIRECTORY_PICTURES) dan nantinya digunakan oleh MediaStore untuk menempatkan file pada folder yang sesuai di galeri publik.
+
+Berikut adalah jawaban untuk tugas (Assignment) berdasarkan modul Part 3 yang kamu kerjakan:
+
+1. Code Handling Path & URI
+Bagian kode yang menangani pembuatan file pada path tertentu dan menghasilkan URI-nya terdapat di dalam file ProviderFileManager.kt, khususnya pada fungsi generatePhotoUri. Fungsi ini menentukan direktori penyimpanan (getExternalFilesDir) dan membungkusnya menjadi URI menggunakan helper.
+
+Kotlin
+
+// Di file ProviderFileManager.kt
+
+fun generatePhotoUri(time: Long): FileInfo {
+    val name = "img_$time.jpg"
+    // Get the file object
+    // The file will be stored in the folder defined in
+    // file_provider_paths.xml
+    val file = File(
+        context.getExternalFilesDir(fileHelper.getPicturesFolder()),
+        name
+    )
+    return FileInfo(
+        fileHelper.getUriFromFile(file),
+        file,
+        name,
+        fileHelper.getPicturesFolder(),
+        "image/jpeg"
+    )
+}
+
+
+2. FileInfo Attributes
+URI (First Attribute): URI ini merujuk pada lokasi sementara (temporary identifier) dari file yang dihasilkan oleh FileProvider. URI ini digunakan untuk memberikan izin akses (grant access) yang aman kepada aplikasi eksternal (seperti aplikasi Kamera) agar bisa menulis atau menyimpan hasil foto ke dalam penyimpanan internal aplikasi kita ("internal storage") tanpa mengekspos path aslinya secara langsung .
+
+
+relativePath (Fourth Attribute): relativePath merujuk pada nama folder atau direktori kategori di mana file tersebut akan disimpan atau diorganisir di dalam sistem (misalnya folder "Pictures" atau "Movies"). Nilai ini diambil dari Environment directory (seperti Environment.DIRECTORY_PICTURES) dan nantinya digunakan oleh MediaStore untuk menempatkan file pada folder yang sesuai di galeri publik .
+
+
+
+3. [Bonus] Chronological Order (Picture to MediaStore)
+Berikut adalah urutan kronologisnya:
+
+	- User Click: User menekan tombol foto di MainActivity, yang memicu fungsi openImageCapture().
+	- Generate URI: openImageCapture() memanggil providerFileManager.generatePhotoUri(). Di sini, sebuah file kosong dibuat di penyimpanan internal aplikasi dan sebuah URI FileProvider dibuat untuk file tersebut.
+	- Launch Camera: MainActivity meluncurkan aplikasi kamera bawaan menggunakan takePictureLauncher.launch(uri), mengirimkan URI yang baru dibuat sebagai target penyimpanan.
+	- Capture: User mengambil foto. Aplikasi kamera menyimpan data gambar ke dalam URI yang diberikan tadi.
+	- Callback: Setelah sukses, ActivityResultLauncher di MainActivity menerima hasil (callback) dan memanggil providerFileManager.insertImageToStore(photoInfo).
+	- Prepare MediaStore: Fungsi insertImageToStore menyiapkan ContentValues (metadata seperti nama file, tipe mime, relative path).
+	- Insert & Copy: Fungsi insertToStore dijalankan. Ia melakukan:
+		- Membuat entri baru di database MediaStore publik menggunakan contentResolver.insert, yang menghasilkan URI baru (lokasi permanen di galeri).
+
+		- Membuka aliran data (InputStream) dari file sementara (URI FileProvider) dan menyalin isinya (IOUtils.copy) ke aliran tujuan (OutputStream) milik URI MediaStore yang baru .
