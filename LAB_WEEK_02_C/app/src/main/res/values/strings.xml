@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">LAB_WEEK_02_C</string>
+    <string name="standard_button">Standard</string>
+    <string name="single_top_button">Single Top</string>
+</resources>
