@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 ZIP APK: [APK LAB_WEEK_02_B.zip](https://github.com/user-attachments/files/22121053/APK.LAB_WEEK_02_B.zip)
 
 Screenshot update themes.xml <img width="1920" height="1080" alt="Screenshot (106)" src="https://github.com/user-attachments/assets/fff72916-5fa0-44f9-b225-f3ed70f1e698" />
@@ -15,3 +16,8 @@ Screenshot standard button <img width="1920" height="1080" alt="Screenshot (114)
 
 Screenshot Single Top Button <img width="1920" height="1080" alt="Screenshot (115)" src="https://github.com/user-attachments/assets/27f760a1-422a-4294-bc2e-ea2ff5df19ae" />
 >>>>>>> temp_02_C/master
+=======
+ZIP APK: [APK LAB_WEEK_02_C.zip](https://github.com/user-attachments/files/22214749/APK.LAB_WEEK_02_C.zip)
+
+[Screenshots](https://multimedianusantara-my.sharepoint.com/:f:/g/personal/aisya_adiyan_student_umn_ac_id/EvtsaPkt-4NCm5dgGlWsvNIBZBFZmk_x9v77z4fR2xo95w?e=vnLmi4)
+>>>>>>> temp_03/master

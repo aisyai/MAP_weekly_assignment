@@ -2,11 +2,14 @@
 <project version="4">
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   <component name="GradleMigrationSettings" migrationVersion="1" />
 =======
 >>>>>>> temp_02_B/master
 =======
 >>>>>>> temp_02_C/master
+=======
+>>>>>>> temp_03/master
   <component name="GradleSettings">
     <option name="linkedExternalProjectsSettings">
       <GradleProjectSettings>
@@ -14,14 +17,20 @@
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="gradleJvm" value="#GRADLE_LOCAL_JAVA_HOME" />
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> temp_03/master
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
           </set>
         </option>
+<<<<<<< HEAD
 =======
 >>>>>>> temp_02_C/master
+=======
+>>>>>>> temp_03/master
       </GradleProjectSettings>
     </option>
   </component>
